@@ -1,16 +1,16 @@
-ZoomContainer component allows you to emphasize and increase the scope of any arbitrary Flex component
+п»їZoomContainer component allows you to emphasize and increase the scope of any arbitrary Flex component
 supporting IVisualElement, for example such as VideoDisplay or Image. Principle you can build
 own container and passing it as a target in RectangleTool.
 You can count on help the developer, contact by e-mail flexconstructor@gmail.com
 or leaving a comment in the blog http://flexconstructor.blogspot.com/
 All the best, Yours sincerely, Konstantin Kohl
 
-Компонент ZoomContainer позволяет выделить и увеличить произвольную область любого Flex компонента,
-поддерживающего IVisualElement, например такого, как VideoDisplay или Image. Впринципе вы можете собрать
-и собственный контейнер передав его в качестве target в RectangleTool.
-Вы можете расчитывать на помощь разработчика, обратившись по электронной почте flexconstructor@gmail.com
-или оставив комментарий в блоге http://flexconstructor.blogspot.com/
-Всех благ, искренне Ваш, Konstantin Kohl
+РљРѕРјРїРѕРЅРµРЅС‚ ZoomContainer РїРѕР·РІРѕР»СЏРµС‚ РІС‹РґРµР»РёС‚СЊ Рё СѓРІРµР»РёС‡РёС‚СЊ РїСЂРѕРёР·РІРѕР»СЊРЅСѓСЋ РѕР±Р»Р°СЃС‚СЊ Р»СЋР±РѕРіРѕ Flex РєРѕРјРїРѕРЅРµРЅС‚Р°,
+РїРѕРґРґРµСЂР¶РёРІР°СЋС‰РµРіРѕ IVisualElement, РЅР°РїСЂРёРјРµСЂ С‚Р°РєРѕРіРѕ, РєР°Рє VideoDisplay РёР»Рё Image. Р’РїСЂРёРЅС†РёРїРµ РІС‹ РјРѕР¶РµС‚Рµ СЃРѕР±СЂР°С‚СЊ
+Рё СЃРѕР±СЃС‚РІРµРЅРЅС‹Р№ РєРѕРЅС‚РµР№РЅРµСЂ РїРµСЂРµРґР°РІ РµРіРѕ РІ РєР°С‡РµСЃС‚РІРµ target РІ RectangleTool.
+Р’С‹ РјРѕР¶РµС‚Рµ СЂР°СЃС‡РёС‚С‹РІР°С‚СЊ РЅР° РїРѕРјРѕС‰СЊ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР°, РѕР±СЂР°С‚РёРІС€РёСЃСЊ РїРѕ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚Рµ flexconstructor@gmail.com
+РёР»Рё РѕСЃС‚Р°РІРёРІ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РІ Р±Р»РѕРіРµ http://flexconstructor.blogspot.com/
+Р’СЃРµС… Р±Р»Р°Рі, РёСЃРєСЂРµРЅРЅРµ Р’Р°С€, Konstantin Kohl
 http://twitter.com/FlexConstructor
 http://www.facebook.com/flexconstructor
 https://www.free-lance.ru/users/Kohl/
