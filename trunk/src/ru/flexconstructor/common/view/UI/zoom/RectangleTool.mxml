@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 width="100%" height="100%"
+		  creationComplete="group1_creationCompleteHandler(event)">
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+	<fx:Declarations>
+		<s:Parallel id="effect" target="{_target}" duration="250">		
+			<s:Resize widthBy="{_w}" heightBy="{_h}"/>
+			<s:Move  xBy="{_xPos}" yBy="{_yPos}" autoCenterTransform="false"/>
+		</s:Parallel>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			private var _autostart:Boolean=false;	
+			
+			[Bindable]private var _target:DisplayObject;			
+			[Bindable]private var _xPos:Number=0;
+			[Bindable]private var _yPos:Number=0;
+			[Bindable]private var _w:int=0;
+			[Bindable]private var _h:int=0;
+			
+			
+			
+			public function set target(value:DisplayObject):void{
+				_target=value;
+			
+			}
+			
+			public function get target():DisplayObject{
+			return _target;
+			
+			}
+			
+			
+			public function set autostart(value:Boolean):void{
+				_autostart=value;
+			
+			}
+			
+			
+			public function get autostart():Boolean{
+			
+			return _autostart;
+			}
+			
+			public function start():void{
+			this.addEventListener(MouseEvent.MOUSE_DOWN,mouseDownHandler)
+			
+			}
+			
+			
+			public function zoom():void{
+			var rect:Rectangle=this.getRectangle();
+			if(rect.width==0 || rect.height==0)return;
+			var center:Point=this.getCenter(this.target);
+			var test_rect:Rectangle=this.getBounds(this.parent);
+			var scale_factor:Number=Number(Math.min((test_rect.width/rect.width),(test_rect.height/rect.height)).toFixed(2));
+			_w=int(this.target.width*scale_factor-this.target.width);
+			_h=int(this.target.height*scale_factor-this.target.height);
+			this._xPos=(this.target.x-rect.x)*scale_factor-this.target.x;
+			this._yPos=(this.target.y-rect.y)*scale_factor-this.target.y;
+			effect.play();
+			this.stop();
+			}
+			
+			public function unzoom():void{
+			
+				this._xPos=this.x-this.target.x;
+				this._yPos=this.y-this.target.y;
+				this._w= this.width-this.target.width;
+				this._h=this.height-this.target.height;
+				effect.play();
+			
+			}
+			
+			
+			private function mouseDownHandler(e:MouseEvent):void{
+				
+				this.removeEventListener(MouseEvent.MOUSE_DOWN,mouseDownHandler)
+			this.zoomrect.x=this.mouseX;
+			this.zoomrect.y=this.mouseY;
+			this.zoomrect.width=0;
+			this.zoomrect.height=0;
+			this.zoomrect.visible=true;
+			this.addEventListener(MouseEvent.MOUSE_MOVE,mouseMovieHandler);
+			this.addEventListener(MouseEvent.MOUSE_UP,mouseUpHandler)
+			
+			}
+			
+			
+			private function mouseUpHandler(e:MouseEvent):void{
+				this.removeEventListener(MouseEvent.MOUSE_MOVE,mouseMovieHandler);
+				this.removeEventListener(MouseEvent.MOUSE_UP,mouseUpHandler)
+				this.addEventListener(MouseEvent.MOUSE_DOWN,mouseDownHandler)
+			}
+			
+			
+			private function mouseMovieHandler(e:MouseEvent):void{
+				this.zoomrect.width=this.mouseX-this.zoomrect.x;
+				this.zoomrect.height=this.mouseY-this.zoomrect.y;
+			
+			}
+			
+			
+			public function stop():void{
+				zoomrect.visible=false;
+				zoomrect.x=0;
+				zoomrect.y=0;
+				zoomrect.width=0;
+				zoomrect.height=0;
+				
+			}
+
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				if(this._autostart){
+				this.start();
+				}
+			}
+			
+			
+			public function getRectangle():Rectangle{
+			var rect:Rectangle=new Rectangle;
+			rect.x=Math.min(this.zoomrect.x,this.zoomrect.width+this.zoomrect.x);
+			rect.y=Math.min(this.zoomrect.y,this.zoomrect.height+this.zoomrect.y);
+			rect.width=Math.abs(this.zoomrect.width);
+			rect.height=Math.abs(this.zoomrect.height);
+			
+			return rect
+			}
+			
+			
+			public function getCenter(target:DisplayObject):Point{
+			var point:Point=new Point()
+				point.x=zoomrect.x+this.zoomrect.width*.5;
+				point.y=zoomrect.y+this.zoomrect.height*.5;
+			var global_point:Point=this.localToGlobal(point);
+			var local_point:Point=target.globalToLocal(global_point)
+			return local_point;
+			}
+
+		]]>
+	</fx:Script>
+	<s:Rect id="zoomrect" visible="false">
+		<s:fill>
+			<s:SolidColor color="#3399ff" alpha=".2"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke color="#3399ff" weight="2"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Rect top="0" left="0" right="0" bottom="0">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF" alpha="0"/>
+		</s:fill>
+	</s:Rect>
+</s:Group>

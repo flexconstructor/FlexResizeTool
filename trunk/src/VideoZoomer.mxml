@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" 
+			   minHeight="600" 
+			   xmlns:rectangletool="ru.flexconstructor.common.rectangletool.*" xmlns:zoom="ru.flexconstructor.common.view.UI.zoom.*">
+	
+
+	<fx:Script>
+		<![CDATA[
+			
+			
+			
+
+
+			protected function button5_clickHandler(event:MouseEvent):void
+			{
+				zoomcontainer.zoom();
+					
+			}
+
+
+			protected function button6_clickHandler(event:MouseEvent):void
+			{
+				this.zoomcontainer.unzoom();
+			}
+
+
+			protected function button7_clickHandler(event:MouseEvent):void
+			{
+				videodisplay.pause();
+			}
+
+
+			protected function button8_clickHandler(event:MouseEvent):void
+			{
+				videodisplay.play();
+			}
+
+
+			protected function button9_clickHandler(event:MouseEvent):void
+			{
+				this.zoomcontainer2.zoom();
+			}
+			
+			
+			protected function button10_clickHandler(event:MouseEvent):void{
+				this.zoomcontainer2.unzoom()
+			
+			}
+
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<!-- Разместить невизуальные элементы (например, службы или объекты значений) -->
+	</fx:Declarations>
+	<s:Group width="640" height="480"  left="10" top="10">
+	<zoom:ZoomContainer width="100%" height="100%" id="zoomcontainer">
+	<zoom:target>
+		<s:VideoDisplay 
+			width="100%" 
+			height="100%" 
+			source="media/sample.f4v" 
+			scaleMode="zoom"
+			id="videodisplay"/>
+	</zoom:target>		
+	</zoom:ZoomContainer>
+		<s:HGroup right="5" top="5">
+			<s:Button width="30" height="30" label="+" click="button5_clickHandler(event)"/>
+			<s:Button width="30" height="30" label="-"  click="button6_clickHandler(event)"/>
+		</s:HGroup>
+		<s:HGroup bottom="5" horizontalCenter="0">
+			<s:Button label="||" width="30" height="30" click="button7_clickHandler(event)"/>
+			<s:Button label=">" width="30" height="30" click="button8_clickHandler(event)"/>
+		</s:HGroup>
+	</s:Group>
+	<s:Group width="500" height="450"  bottom="10" right="20">
+	<zoom:ZoomContainer width="100%" height="100%" id="zoomcontainer2" >
+		<zoom:target>
+			<s:Image source="media/cover.jpg" width="100%" height="100%" scaleMode="zoom"/>
+		</zoom:target>		
+	</zoom:ZoomContainer>
+		<s:HGroup right="5"   top="5">
+		<s:Button width="30" height="30" label="+" click="button9_clickHandler(event)"/>
+		<s:Button width="30" height="30" label="-" click="button10_clickHandler(event)" />
+	</s:HGroup>
+	</s:Group>
+</s:Application>
